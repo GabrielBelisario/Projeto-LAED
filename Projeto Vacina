@@ -1,1 +1,49 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+ typedef struct dma {
+ int dia;
+ int mes;
+ int ano;} data;
+ 
+int main(){
+    data inicio;
+    data fim;
+    char nome[50];
+    int idade;
+    printf("\nPor favor, me atualize! Em que dia estamos ? \n\n");
+    scanf("%d", &fim.dia);
+        if (fim.dia<32){
+            printf("\n\nEntendido. E qual é o numero do mes vigente? \n\n");
+            scanf("%d", &fim.mes);
+            if (fim.mes<13){
+                printf("\n\nOk! E por fim, qual o ano atual?\n\n");
+                scanf("%d", &fim.ano);
+                if ((fim.ano>1900) && (fim.ano < 2019)){
+                    system("cls");
+                    printf("\nTudo bem. Agora vamos aos seus dados pessoais...");
+                    system("sleep 03");
+                    printf("\n\nInsira o seu nome: ");
+                    scanf("%[^\n]s", &nome);
+                    printf("Em qual dia voce nasceu?");
+                    scanf("%d", &inicio.dia);
+                    if(inicio.dia<32){
+                        printf("Qual o numero do mes em que voce nasceu?");
+                        scanf("%d", &inicio.mes);
+                        if (inicio.mes<13){
+                            printf("Em qual ano voce nasceu?");
+                            scanf("%d", &inicio.ano);
+                            if (inicio.ano<=fim.ano){
+                                int in, end, idade;
+                                in = (inicio.dia)+(inicio.mes*720)+(inicio.ano*8760);
+                                end = (fim.dia)+(fim.mes*720)+(fim.ano*8760);
+                                idade = ((end-in)/24)/365;
+                                printf("%d", idade);
+                            }   else {printf("\n\t==> *Algo esta errado, por favor reveja o valor informado! *<=="); }
+                        }   else {printf("\n\t==> *Algo esta errado, por favor reveja o valor informado! *<=="); }
+                    }   else {printf("\n\t==> *Algo esta errado, por favor reveja o valor informado! *<=="); }
+                }   else {printf("\n\t==> *Algo esta errado, por favor reveja o valor informado! *<=="); }
+            }   else {printf("\n\t==> *Algo esta errado, por favor reveja o valor informado! *<=="); }
+        }   else {printf("\n\t==> *Algo esta errado, por favor reveja o valor informado! *<=="); }
+    return (0);
+}
