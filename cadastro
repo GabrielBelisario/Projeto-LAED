@@ -1,0 +1,106 @@
+# Projeto-LAED
+
+#include<stdio.h>
+#include<stdlib.h>
+#define SIZE 200
+
+char nome[SIZE][50];
+int codigo[SIZE];
+int idade[SIZE];
+int op, i;
+char vacina[SIZE];
+static int linha = 0;
+
+void cadastro();
+void pesquisa();
+void vacinas();
+
+int main (void){
+        cadastro();
+        vacinas();
+        pesquisa();
+        return(0);
+}
+
+void cadastro(){
+
+    do{
+        printf("\nDigite o nome da pessoa:");
+        scanf("%[^\n]s", &nome[linha]);
+        printf("\nDigite a idade da pessoa:");
+        scanf("%d", &idade[linha]);
+        getchar();
+        printf("\nDigite um codigo para o cadastro:");
+        scanf("%d", &codigo[linha]);
+        getchar();
+        printf("\nDigite 1 para continuar ou outro numero para terminar:");
+        scanf("%d", &op);
+        getchar();
+        system("cls");
+        linha++;
+    }while(op==1);
+    return;
+}
+void pesquisa(){
+    int codigoPesquisa;
+    char nomePesquisa[50];
+
+    do {
+    printf("\nDigite 1 para pesquisar pelo codigo ou 2 pelo nome:");
+    scanf("%d", &op);
+    getchar();
+    switch(op){
+     case 1:
+         printf("\nDigite o codigo: ");
+         scanf("%d", &codigoPesquisa);
+         getchar();
+            for(i=0;i<SIZE;i++){
+                if(codigo[i]==codigoPesquisa){
+                    printf("\nNome %s \nCodigo %d \nIdade %d", nome [i], codigo[i], idade[i],vacina[i]);
+                }
+            }
+        break;
+     case 2:
+         printf("\nDigite o nome:");
+         scanf("%s", nomePesquisa);
+         getchar();
+         for(i=0;i<SIZE;i++){
+                if(nome[i]==nomePesquisa){
+                printf("\nNome %s \nCodigo %d \nIdade %d \n Vacinas", nome [i], codigo[i], idade[i],vacina[i] );
+                }
+            }
+
+        break;
+     default:
+        printf("\nOpcao invalida");
+        break;
+    }
+    printf("\n\ndigite 1 para continuar pesquisando");
+    scanf("%d", &op);
+    getchar();
+}while(op==1);
+
+return;
+}
+void vacinas(){
+    printf("\nVamos atualizar a lista de vacinas que ja foram aplicadas:");
+    printf("\n\nO individuo tomou as seguintes vacinas ao nascer\nVacina BCG\nVacina da Hepatite B:");
+    scanf("%d", &vacina[linha]);
+
+    printf("\n\nO individuo tomou as seguintes vacinas com 2 meses\nVacina VIP\nVacina VORH\nVacina Pentavalente\nVacina Pneumocócica ");
+    scanf("%d", &vacina[linha]);
+
+    printf("\n\nO individuo tomou as seguintes vacinas com 3 meses\nVacina Meningocócica C");
+    scanf("%d", &vacina[linha]);
+
+    printf("\n\nO individuo tomou as seguintes vacinas com 3 meses\nVacina VIP\nVacina Pentavalente\nVacina VORH\nVacina Pneumocócica ");
+    scanf("%d", &vacina[linha]);
+    linha++;
+    if(vacina[linha]=="s"){
+        printf("\nVacinas ok");
+    }else{
+        printf("\nVacinas em falta");
+    }
+
+return;
+}
